@@ -32,7 +32,9 @@ func volume_commit(obj CommitParams, logger *log.Logger) (int, error) {
 	}
 	obj.commitMsg = string(byteCommitInfo)
 	if obj.genUUID {
-		obj.layerUUID = fmt.Sprintf("%s", uuid.NewV4())
+		//obj.layerUUID = fmt.Sprintf("%s", obj.uuid)
+		tmp,_:=uuid.NewV4()
+		obj.layerUUID = fmt.Sprintf("%s", tmp )
 		print_Log("Generate uuid: "+obj.layerUUID, logger)
 	} else {
 		print_Log("UUID set by manual: "+obj.layerUUID, logger)
